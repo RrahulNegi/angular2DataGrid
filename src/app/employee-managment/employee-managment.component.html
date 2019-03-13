@@ -1,0 +1,17 @@
+<p>
+  employee-managment works!
+</p>
+<div>
+  <table>
+    <tr>
+      <td>All departments</td><td><input type="radio" name="departments" checked value="all" [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()" /> {{itCount + accountCount + hrCount}}</td>
+      <td>IT</td><td><input type="radio" name="departments" value="IT" [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()"/> {{itCount}}</td>
+      <td>Account</td><td> <input type="radio" name="departments" value="Account" [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()"/> {{accountCount}}</td>
+      <td>HR</td><td> <input type="radio" name="departments" value="HR" [(ngModel)]="selectedRadioButtonValue" (change)="onRadioButtonSelectionChange()"/>{{hrCount}}</td>
+
+    </tr>
+  </table>
+</div>
+
+<app-employee-form [departmentValue]="selectedRadioButtonValue"
+(itEvent)="receiveITCount($event)" (hrEvent)="receiveHRCount($event)" (accountEvent)="receiveAccountCount($event)"></app-employee-form>

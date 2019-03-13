@@ -1,0 +1,86 @@
+<h1>Employee</h1>
+
+<div>
+  <table>
+    <tr>
+      <td>
+      Name :
+      </td>
+      <td>
+        <input type="text" id="name" [(ngModel)]="name" />
+      </td>
+    </tr>
+    <tr>
+       <tr>
+      <td>
+      Salary :
+      </td>
+      <td>
+        <input type="text" id="name" [(ngModel)]="salary" />
+      </td>
+    </tr>
+    <tr>
+       <tr>
+      <td>
+      Department :
+      </td>
+      <td>
+        <select name="department" [(ngModel)]="department">
+          <option value=""></option>
+          <option *ngFor ="let dept of  departmentArray " value="{{dept.name}}">{{dept.name}}</option>
+        </select>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="button" (click)="submit()" value="Submit" />
+      </td>
+    </tr>
+     <tr>
+      <td>
+      </td>
+      <td>
+        <input type="text" id="id" [(ngModel)]="id" />
+      </td>
+    </tr>
+  </table>
+</div>
+<br/>
+<br/>
+<div>
+  <table class="gridStyle">
+    <tr gridStyle>
+      <th>
+        SNo
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Salary
+      </th>
+      <th>
+        Department
+      </th>
+      <th>
+        Edit
+      </th>
+      <th>
+        Delete
+      </th>
+    </tr>
+    {{selectedValue}}
+    <ng-container  *ngFor="let emp of empArray; let i=index">
+  <tr  *ngIf="selectedValue=='all' || selectedValue==emp.department">
+
+      <td>{{i+1}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.salary}}</td>
+        <td>{{emp.department}}</td>
+        <td><input type="button" (click)="edit(i)" value="Edit"/></td>
+        <td><input type="button" (click)="delete(i)" value="Delete"/></td>
+    </tr>
+    </ng-container>
+  </table>
+</div>
